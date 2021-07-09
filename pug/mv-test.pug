@@ -1,0 +1,17 @@
+extends template.pug
+
+block variables
+  - const title = 'mv-test'
+
+block addcss
+
+block content
+  section#mv.mv
+    article.mv__title-wrap
+      p.mv__title
+        | CREATE NEW
+        | INNOVATION.
+
+block scripts
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js")
+  script(src=assets + "js/mv-test.js")

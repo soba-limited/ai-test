@@ -1,0 +1,86 @@
+section.access {
+  @include pt-section();
+  @include pb(130px, 130px, 60px);
+  background: $grad;
+
+  .map-wrap {
+    @include mt-30();
+    height: 480px;
+    position: relative;
+
+    @include sp {
+      height: 280px;
+      margin-bottom: calc(140 / 375 * 100vw + 20px);
+    }
+
+    .thumbs-list {
+      position: absolute;
+      left: 0;
+      width: 100%;
+
+      * {
+        vertical-align: top;
+      }
+
+      @include tab-big {
+        bottom: -70px;
+        padding: 0 40px;
+        @include flex();
+
+        @include tab-only {
+          bottom: calc(-70 / 1920 * 100vw);
+        }
+
+        figure {
+          flex-basis: calc(20% - (20 / 1920 * 100vw));
+        }
+      }
+
+      @include sp {
+        top: calc(100% + 20px);
+
+        figure {
+          padding: 0 15px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+section.pagetop {
+  background: white;
+  padding: 16px 0;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    @include opacity;
+  }
+}
+
+footer {
+  .f-top {
+    text-align: center;
+    padding: 50px 15px 30px;
+  }
+
+  .name {
+    font-weight: 500;
+    @include fs(1.4rem, 1.4rem, 1.4rem);
+    margin-top: 16px;
+  }
+
+  .address {
+    @include fs(1.2rem, 1.2rem, 1.2rem);
+    margin-top: 6px;
+  }
+
+  .copy {
+    text-align: center;
+    padding: 8px;
+    background: $gold;
+    @include fs(1.2rem, 1.2rem, 1.2rem);
+    @include mont();
+  }
+}

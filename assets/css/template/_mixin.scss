@@ -1,0 +1,297 @@
+$break-pc: 1281px;
+$break-tab-small: 1280px;
+$break-tab-big: 768px;
+$break-sp: 767px;
+
+@mixin pc {
+  @media only screen and (min-width: ($break-pc)) {
+    @content;
+  }
+}
+
+@mixin tab-small {
+  @media only screen and (max-width: ($break-tab-small)) {
+    @content;
+  }
+}
+
+@mixin tab-big {
+  @media only screen and (min-width: ($break-tab-big)) {
+    @content;
+  }
+}
+
+@mixin tab-only {
+  @media only screen and (min-width: ($break-tab-big)) and (max-width: ($break-tab-small)) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media only screen and (max-width: ($break-sp)) {
+    @content;
+  }
+}
+
+//width
+
+@mixin width($pc) {
+  width: 100%;
+  max-width: calc(#{$pc} + 40px);
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include sp {
+    padding: 0 20px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@mixin width2($pc) {
+  width: 100%;
+  max-width: calc(#{$pc} + 40px);
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include sp {
+    padding: 0;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+//display:flex;
+
+@mixin flex($justify: space-between, $align: stretch) {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flextop($pc, $num1, $tab, $num3, $sp, $num2) {
+  @include pc {
+    margin-top: $pc;
+
+    @for $i from 1 through $num1 {
+      &:nth-of-type(#{$i}) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @include tab-only {
+    margin-top: $tab;
+
+    @for $i from 1 through $num3 {
+      &:nth-of-type(#{$i}) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @include sp {
+    margin-top: $sp;
+
+    @for $i from 1 through $num2 {
+      &:nth-of-type(#{$i}) {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@mixin flextop_p($pc, $num1, $tab, $num3, $sp, $num2) {
+  @include pc {
+    padding-top: $pc;
+
+    @for $i from 1 through $num1 {
+      &:nth-of-type(#{$i}) {
+        padding-top: 0;
+      }
+    }
+  }
+
+  @include tab-only {
+    padding-top: $tab;
+
+    @for $i from 1 through $num3 {
+      &:nth-of-type(#{$i}) {
+        padding-top: 0;
+      }
+    }
+  }
+
+  @include sp {
+    padding-top: $sp;
+
+    @for $i from 1 through $num2 {
+      &:nth-of-type(#{$i}) {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+//flex-basis
+
+@mixin basis($pc, $tab, $sp) {
+  flex-basis: $pc;
+  max-width: $pc;
+
+  @include tab-small {
+    flex-basis: $tab;
+    max-width: $tab;
+  }
+
+  @include sp {
+    flex-basis: $sp;
+    max-width: $sp;
+  }
+}
+
+@mixin basis2($pc, $tab, $sp) {
+  flex-basis: $pc;
+  max-width: $pc;
+
+  @include tab-small {
+    flex-basis: $tab;
+    max-width: $tab;
+  }
+
+  @include sp {
+    flex-basis: $sp;
+    max-width: $sp;
+  }
+}
+
+@mixin basis_s($pc) {
+  flex-basis: $pc;
+  max-width: $pc;
+}
+
+//font-size
+@mixin fs($pc: 1.6rem, $tab: 1.6rem, $sp: 1.4rem) {
+  font-size: $pc;
+
+  @include tab-small {
+    font-size: $tab;
+  }
+
+  @include sp {
+    font-size: $sp;
+  }
+}
+
+@mixin lh($pc: 16px, $sp: 14px) {
+  line-height: $pc;
+
+  @include sp {
+    line-height: $sp;
+  }
+}
+
+//slick
+
+@mixin slicks {
+  font-size: 10px;
+}
+
+//margin
+
+@mixin mt($pc, $tab, $sp) {
+  margin-top: $pc;
+
+  @include tab-small {
+    margin-top: $tab;
+  }
+
+  @include sp {
+    margin-top: $sp;
+  }
+}
+
+@mixin mb($pc, $tab, $sp) {
+  margin-bottom: $pc;
+
+  @include tab-small {
+    margin-bottom: $tab;
+  }
+
+  @include sp {
+    margin-bottom: $sp;
+  }
+}
+
+//padding
+
+@mixin pt($pc, $tab, $sp) {
+  padding-top: $pc;
+
+  @include tab-small {
+    padding-top: $tab;
+  }
+
+  @include sp {
+    padding-top: $sp;
+  }
+}
+
+@mixin pb($pc, $tab, $sp) {
+  padding-bottom: $pc;
+
+  @include tab-small {
+    padding-bottom: $tab;
+  }
+
+  @include sp {
+    padding-bottom: $sp;
+  }
+}
+
+@mixin scbar($color: rgba(0, 0, 50, 0.5)) {
+  @media only screen and (min-width: 768px) {
+    /*スクロールバー全体*/
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    /*スクロールバーの動く部分*/
+    &::-webkit-scrollbar-thumb {
+      background-color: $color;
+      border-radius: 10px;
+      opacity: 0.3;
+    }
+  }
+}
+
+//background
+@mixin bgimg($falder, $img, $exe: 'jpg', $size: cover, $pos: center) {
+  background: url('../../images/#{$falder}/#{$img}.#{$exe}') no-repeat;
+  background-size: $size;
+  background-position: $pos;
+}
+
+@mixin bgimg2($falder, $img, $exe: 'jpg', $size: cover, $pos: center) {
+  background: url('../../images/#{$falder}/#{$img}.#{$exe}') no-repeat;
+  background-size: $size;
+  background-position: $pos;
+
+  @include sp {
+    background-image: url('../../images/#{$falder}/#{$img}__sp.#{$exe}');
+  }
+}
+
+//hover
+
+@mixin opacity {
+  transition: ease-out 0.3s all;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

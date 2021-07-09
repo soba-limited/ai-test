@@ -1,0 +1,238 @@
+main.index {
+  section.mv {
+    @include bgimg2('index', 'mv', 'jpg', cover, center);
+    height: 600px;
+    position: relative;
+    @include flex(center, center);
+    padding: 20px;
+
+    @include tab-small {
+      height: 420px;
+    }
+
+    @include sp {
+      height: calc(546 / 667 * 100vh);
+    }
+
+    figure {
+      @include sp {
+        width: calc(100vw - 60px);
+        transform: translateY(-6vh);
+      }
+    }
+
+    .banner {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -66px;
+
+      @include tab-small {
+        width: 520px;
+      }
+
+      @include sp {
+        width: calc(100% - 60px);
+        a {
+          width: 100%;
+        }
+        img {
+          width: 100%;
+        }
+      }
+
+      a {
+        display: inline-block;
+        @include opacity();
+      }
+    }
+  }
+
+  section.top-text {
+    @include pt(120px, 120px, 120px);
+    @include pb(70px, 70px, 50px);
+    background: $grad;
+
+    .text {
+      text-align: center;
+      @include mt-30();
+      line-height: 2.2;
+    }
+  }
+
+  section.price {
+    @include pt-section();
+    @include pb-section();
+
+    .flex {
+      @include flex();
+      @include mt-30();
+    }
+
+    .single {
+      @include basis(50%, 50%, 100%);
+      @include flex(center, center);
+      flex-direction: column;
+      background: $sub1a;
+      padding: 60px 20px;
+
+      &.mens {
+        background: $sub2a;
+
+        .more {
+          background: $sub2b;
+          border: 1px solid $sub2b;
+        }
+      }
+
+      &.ladies {
+        .more {
+          transform: translateY(6px);
+        }
+      }
+
+      figure {
+        margin: 15px auto 25px;
+      }
+
+      .more {
+        @include more($sub1b);
+      }
+    }
+  }
+
+  section.features {
+    @include pt-section();
+    @include pb-section();
+    background: $grad;
+
+    article.list {
+      @include mt-30;
+      @include flex(center, stretch);
+    }
+
+    figure {
+      @include basis(calc(100% / 3 - 20px), calc(100% / 3 - 12px), 100%);
+      @include flextop(30px, 3, 18px, 3, 20px, 1);
+
+      @include pc {
+        margin-left: 30px;
+
+        &:nth-of-type(3n-2) {
+          margin-left: 0;
+        }
+      }
+
+      @include tab-only {
+        margin-left: 18px;
+
+        &:nth-of-type(3n-2) {
+          margin-left: 0;
+        }
+      }
+
+      a {
+        display: block;
+        position: relative;
+        overflow: hidden;
+
+        &:hover img {
+          transform: scale(1.05);
+        }
+      }
+
+      img {
+        vertical-align: top;
+        display: inline-block;
+        transition: ease 0.3s all;
+      }
+
+      figcaption {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        padding: 0 10px;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+        @include fs(1.7rem, 1.7rem, 1.5rem);
+      }
+    }
+
+    .more {
+      @include mt-30();
+      @include more2(white);
+    }
+  }
+
+  section.faq {
+    @include pt-section();
+    @include pb-section();
+
+    .list {
+      @include mt-50;
+    }
+
+    dl {
+      @include mt-30;
+
+      &.on {
+        dt::after {
+          transform: scaleY(0.5) rotate(90deg) rotateY(180deg);
+        }
+      }
+
+      * {
+        color: $text2;
+      }
+    }
+
+    dt {
+      padding: 6px 20px 20px 50px;
+      border-bottom: 1px solid $text2;
+      position: relative;
+      cursor: pointer;
+      @include fs(1.8rem, 1.8rem, 1.6rem);
+
+      &::before {
+        content: 'Q';
+        position: absolute;
+        left: 0;
+        top: 0;
+        @include mont();
+        @include fs(3.2rem, 3.2rem, 3.2rem);
+        line-height: 1.4;
+      }
+
+      &::after {
+        content: '>';
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-weight: 100;
+        transform: scaleY(0.5) rotate(90deg);
+        @include fs(3.2rem, 3.2rem, 3.2rem);
+        line-height: 1.4;
+        transition: ease 0.3s all;
+      }
+    }
+
+    dd {
+      padding: 20px 20px 6px 50px;
+      position: relative;
+      display: none;
+      @include fs(1.4rem, 1.4rem, 1.4rem);
+
+      &::before {
+        content: 'A';
+        position: absolute;
+        color: $text1;
+        left: 0;
+        top: 14px;
+        @include mont();
+        @include fs(3.2rem, 3.2rem, 3.2rem);
+        line-height: 1.4;
+      }
+    }
+  }
+}

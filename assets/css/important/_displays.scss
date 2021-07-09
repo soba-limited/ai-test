@@ -1,0 +1,23 @@
+@include tab-big {
+  .sp {
+    display: none !important;
+  }
+}
+
+@include tab-small {
+  .pc {
+    display: none !important;
+  }
+}
+
+@include sp {
+  .tab-big {
+    display: none !important;
+  }
+}
+
+@include pc {
+  .tab-small {
+    display: none !important;
+  }
+}
